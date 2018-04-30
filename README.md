@@ -1,2 +1,2 @@
-# aamas2018aser
-Src for AAMAS 2018 paper about AgentSpeak(ER)
+# emas2018aser
+Src for EMAS 2018 paper about AgentSpeak(ER)
