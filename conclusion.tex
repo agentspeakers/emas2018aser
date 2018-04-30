@@ -1,0 +1,46 @@
+%% RHB: OK to change this title as below?
+%\section{Conclusion and Future Work}
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this paper, we introduced \aser, a novel extension of the classical
+{\asl} language. The language provides encapsulation for agent
+goals, which clearly improves legibility and reusability of AgentSpeak
+code. Furthermore, the new language improves some of the shortcomings
+of AgentSpeak in regards to goal orientation and declarative goals by
+ensuring that all reactive plans are also associated with general
+goals, providing a ``goal condition'' which means goals can be still
+active even though presently there is no action for the agent to take
+towards that goal, and allowing external events (i.e., reactions to
+changes in beliefs) to trigger various plans, for all the goals it
+might be relevant.  We formalised the main changes required in the
+existing formal semantics of AgentSpeak and experimentally evaluated
+an interpreter for \aser\ implemented on top of the ASTRA platform.
+
+As with any new programming language, there is much future work, some
+in fact ongoing. We are currently refining the ASTRA implementation,
+trying to make a few optimisations to improve the evaluation results we
+reported in this paper. A Jason-based implementation is also under
+way; comparison of the performances of the two implementations might
+lead to insight that might improve the implementation of the platforms
+themselves. 
+
+More generally, full understanding and evaluation of a programming
+language takes many years. We expect in the long term to use \aser\ in
+the practical development of multi-agent systems, both for real-world
+systems and also academic ones (e.g., for the multi-agent programming
+contest~\cite{Albrecht18}). However, besides the actual programming
+practice, we expect \aser\ to contribute to formal work as
+well. Assessing how formal verification of \aser\ systems compares to
+the original language is also planned as future work.
+%% RHB: OK to mention the multi-agent contest?
+
+% \begin{itemize}
+% \item refining current ASTRA implementation, that will allow to refine the evaluation
+% \item Jason extension implementing {\aser}, and compare it with the ASTRA one
+% \item stress {\aser} in practice 
+% \item think about the tools: how existing IDE and tools can be extended to provide functionalities exploiting the new features
+% \item investigate how the extension either improve or not the possibility to formally analyse the correctness properties
+% \item ...
+% \end{itemize}
+
