@@ -1,10 +1,10 @@
 \section{Evaluation}
 \label{sec:evaluation}
 The new language has been evaluated through a prototype implementation that builds on 
-the ASTRA~\cite{DBLP:conf/prima/CollierRL15} language. This prototype, which is compatible
-with pure ASTRA code, is used to reimplement part of an existing solution for the Minority 
-Game~\cite{moro2004minority}. Interpreter cycle timings are then captured to develop an initial
-understanding of how the new language performs.
+the ASTRA~\cite{DBLP:conf/prima/CollierRL15} language.  As can be seen in the  snippet 
+of code above, the implementation of the {\aser} prototype is syntactically different 
+to the examples provided in Section~\ref{sec:proposal}. This reflects the syntactic 
+approach adopted in ASTRA. It does not impact the associated semantics.
 
 {\small
 \begin{verbatim}
@@ -20,13 +20,12 @@ g-plan +!g() : c <: gc {
 }
 \end{verbatim}}
 
-As can be seen in the  snippet of code above, the implementation of the {\aser} prototype is 
-syntactically different to the examples provided in Section~\ref{sec:proposal}. This reflects 
-the syntactic approach adopted in ASTRA. It does not impact the associated semantics.
+In the section below, we use our prototype language to reimplement part of an existing 
+simulation of the Minority Game~\cite{moro2004minority}.
 
 \subsection{Minority Game}
 \label{minority}
-The Minority Game is a well-known model for evaluating collective behaviour of agents competing 
+The Minority Game (MG) is a well-known model for evaluating collective behaviour of agents competing 
 for finite resources~\cite{moro2004minority}. In a nutshell, the game involves an odd number of
 agents competing for a resource over a series of rounds. For a round, each agent makes a binary
 decision (yes/no). At the end of the round, the bids are counted, and the agents that are in the
@@ -39,7 +38,7 @@ the Minority Game (MG). As is shown in Figure~\ref{fig:mgagents}, the implementa
 rounds, evaluating bids, ...); the \emph{player} agent, who implements a set of MG strategies; 
 and the \emph{main} agent, which is responsible for configuring the game (creating and configuring
 the compere and player agents). Interaction between the Compere and the Players is through a shared 
-game-board artifact.
+game-board artifact implemented using CArtAgO \cite{...}.
 
 \begin{figure}[!tbh]
 \centering
@@ -48,57 +47,21 @@ game-board artifact.
 \label{fig:mgagents}
 \end{figure}
 
-The existing implementation currently consists of 10 plans. Two of the plans are generic and are
-used for configuration. Another plan implements the bidding behaviour, delegating to a 
-\verb|!select_bid(...)| sub-goal that can be contextually selected based on the current strategy.
-Of the remaining plans: four relate to the best play strategy; one relates to a random strategy;
-and two relate to a sticky strategy.
-
-
-In the {\aser} implementation, we reduce this to 3 g-plans --- one for each of the strategies --- 
-and one traditional plan to handle initialization. The code below consists of the initialisation 
-plan and a single g-plan representating the revised implementation of the best play strategy.
-
-In the code below, variable \verb|A| represents the game board, which
-is implemented as an ASTRA module~\cite{DBLP:conf/prima/CollierRL15}. Modules allow the developer to
-create custom actions, sensors, (logical) terms, (logical) formulae,
-and events. For example, \verb|A.join()| is a custom action to allow
-the agent to join the game board; \verb|A.match(history, hist)| is a
-custom term that returns the length of the longest common suffix of the
-\verb|history| and \verb|hist| lists; and
-\verb|$A.event(...)| is a custom event that is generated when the
-Compere agent starts a new round.
-
-The initialisation plan selects the game strategy to be employed by the player. This information
- is passed via the \verb|main(...)| goal; the ASTRA equivalent of a
- main method. When the interpreter handles
-the event corresponding to this goal, it spawns a new intention to achieve the \verb|win(...)| 
-goal (spawning is like forking in multi-processing and is denoted the double exclamation mark).
-
-When the chosen strategy is \emph{bestplay}, the agent achieves the goal by selecting 
-the \verb|!win("bestplay", ...)| g-plan. Upon adoption, the body of this plan is executed, which 
-in this case creates a random set of strategies that are to be used by the agent to select its 
-bid. This involves adopting the \verb|!setup_tactic()| subgoal which is handled by the first two 
-rules within the g-plan. The start of a round is modelled through the custom event 
-\verb|$A.event("play", [])|. The rule that is selected to handle this event chooses the best 
-strategy from the set of strategies available to the agent. Finally, the end of a round is modelled 
-through the custom event \verb|$A.event("winner", [int bid])|. The rule that is selected to handle 
-this event updates the score for all strategies that lead to \verb|bid| being selected.
+The existing implementation currently consist 2 types of plan: configuration plans, one of which is
+called when the agent is created; and strategy plans which implement the various potential strategies
+that the agent can use. A subset of the ASTRA implementation of the \emph{player} agent is given below:
 
 {\small
 \begin{verbatim}
-rule +!main([string strategy, list config]) {
-  !!win(strategy, config); A.join();
-}
-
-g-plan +!win("bestplay", [int t, int h]) <: false {
-  body { !setup_tactic(t); }
-
-  rule +!setup_tactic(0) {}
-  rule +!setup_tactic(int t2) {
+  rule +!main(["bestplay", [int t, int h]]) {
+    -+strategy("bestplay"); !setup_tactic(t, h); !setup();
+  }
+  rule +!main([string strategy, []]) { 
+    -+strategy(strategy); !setup();
+  }
+  rule +!setup_tactic(0,int h) {}
+  rule +!setup_tactic(int t2, int h) {
     list hist = [];
-			
-    // construct a random history
     int i=0;
     while (i<h) {
       hist = hist + [M.randomInt() % 2];
@@ -106,51 +69,123 @@ g-plan +!win("bestplay", [int t, int h]) <: false {
     }
     +strategy(t2, hist, M.randomInt() % 2);
     +score(t2, 0);
-		
-    !setup_tactic(t2-1);
+    !setup_tactic(t2-1, h);
   }
 		
-  rule $A.event("play", []) { 
-    list history = A.results();
-			
-    int max_len = -1; int max_choice = -1;
-    int max_score = -1;
-    foreach (strategy(int s, list hist, int c) 
-              & score(s, int sc)) {
-      int len = A.match(history, hist);
-      if ((len > max_len) | 
-          ((len == max_len) & (max_score < sc))) {
-        max_choice = c; max_score = sc;
-        max_len = len;
+  rule $cartago.signal(string id, play()) : strategy("bestplay") {
+    cartago.results(java.util.ArrayList history);
+		
+    int max_len = -1; int max_choice = -1; int max_score = -1;
+    foreach (strategy(int s, list hist, int c) & score(s, int sc)) {
+      cartago.match(history, P.fromASTRAList(hist), int len);
+      if ((len > max_len) | ((len == max_len) & (max_score < sc))) {
+        max_choice = c;	max_score = sc; max_len = len;
       }
     }
-    A.bid(max_choice);
+    cartago.bid(S.name(), max_choice);
   }
-
-  rule $A.event("winner", [int bid]) {
-    foreach (strategy(int s, list hist, bid) 
-           & score(s, int sc)) {
-      -+score(s, sc+1);
+		
+  rule $cartago.signal(string id, winner(int bid)) : strategy("bestplay") {
+    foreach (strategy(int s, list hist, bid) & score(s, int sc)) {
+      -score(s, sc); +score(s, sc+1);
     }
   }
-}
 \end{verbatim}}
 
-Some interesting observations from adapting the code were: (i) the compexity of the plan contexts 
-were simplified when using g-plans because the g-plan itself provided some of the context; (ii) 
-the number of arguments passed as parameters was reduced, again because the scope of the parameters 
-of the g-plan was the plan body \emph{and} all of its sub-plans; (iii) the total number of rules 
-under consideration on each iteration was significantly less because only the rules within an 
-active g-plan were considered by the agent --- for example, in the original implementation, there 
-was always at least one applicable \verb|+!select_bid()| plan per strategy, whilst in the new 
-implementation only the plans related to the current strategy were applicable.
+In a nutshell, the \verb|!main(...)| plans are the configuration plans. The \verb|!setup_tactic(...)| 
+plans are part of the bestplay strategy but are also used for configuration. This is because, unlike
+simpler strategies such as \emph{Random Bid} and \emph{Tit-for-Tat}, the best play strategy requires 
+that a set of random strategies be created as part of its configuration. A random strategy is
+a random history of the outcomes of the last N rounds combined with a recommended next move. Each
+strategy has an associated score which is used to help determine how successful each strategy is.
 
-\subsection{Preliminary Analysis}
+The strategy plans are the \verb|$cartago.signal(...)| plans, which handle the \verb|play()| 
+and \verb|winner(...)| events respectively. These events are generated by the game board via operations
+performed by the \emph{compere} agent (e.g. when a round starts/ends). For bestplay, the 
+\verb|play()| event results in the agent comparing the outcome history against its strategies. The 
+strategy that best fits the history is selected and the corresponding next move is played (via 
+the \verb|bid()| artifact operation). Conversely, the \verb|winner(...)| event results in the 
+agent updating the score for all strategies that lead to \verb|bid| being selected.
+
+Some of the key points to note when reviewing the above code include: (i) a custom rule is needed 
+to handle the \verb|!main(...)| goal in the case of the bestplay strategy because it requires
+some custom initialisation; (ii) a strategy belief is required to enable the identification of the
+rules that are relevent to the selected strategy; and (iii) there is no guarantee that these
+rules will be grouped together in the implemented agent. They could be spread throughout the
+agents codebase making it difficult to read and understand the overall behaviour.
+
+In the {\aser} implementation, we still maintain the two types of plan, however instead on needing
+multiple plans to capture a strategy, the entire strategy is now encapsulated within a single
+g-plan. The snippet of code below contains the {\aser} code to the ASTRA example given above:
+
+
+{\small
+\begin{verbatim}
+  rule +!main([string strategy, list config]) {
+    !win(strategy, config);
+  }
+  
+  g-rule +!win("bestplay", [int t, int h]) <: false {
+    body {
+      !setup_tactic(t);
+    }
+
+    rule +!setup_tactic(0) {}
+    rule +!setup_tactic(int t2) {
+      list hist = [];
+      int i=0;
+      while (i<h) {
+        hist = hist + [M.randomInt() % 2];
+        i++;
+      }
+      +strategy(t2, hist, M.randomInt() % 2);
+      +score(t2, 0);
+      !setup_tactic(t2-1);
+    }
+
+    rule $cartago.signal(string id, play()) {
+      cartago.results(java.util.ArrayList history);
+			
+      int max_len = -1; int max_choice = -1; int max_score = -1;
+      foreach (strategy(int s, list hist, int c) & score(s, int sc)) {
+        cartago.match(history, P.fromASTRAList(hist), int len);
+        if ((len > max_len) | ((len == max_len) & (max_score < sc))) {
+          max_choice = c; max_score = sc; max_len = len;
+        }
+      }		
+      cartago.bid(S.name(), max_choice);
+    }
+		
+    rule $cartago.signal(string id, winner(int bid)) {
+      foreach (strategy(int s, list hist, bid) & score(s, int sc)) {
+        -score(s, sc); +score(s, sc+1);
+      }
+    }
+  }
+\end{verbatim}}
+
+As can be seen from the above snippet of code. The implementation of the two types of agent
+is quite similar. In fact many of the rule implementations have not changed significantly.
+
+However, there are a few interesting observations regarding the revised implementation: (i) the 
+compexity of the plan contexts were simplified when using g-plans because the g-plan itself 
+provided some of the context; (ii) the number of arguments passed as parameters was reduced, 
+again because the scope of the parameters of the g-plan was the plan body \emph{and} all of 
+its sub-plans; (iii) the total number of rules under consideration on each iteration was
+significantly less because only the rules within an active g-plan were considered by the
+agent --- for example, in the original implementation, there was always at least one
+applicable plan per strategy for each of the cartago events, whilst in the 
+new implementation only those plans related to the current strategy were applicable.
+
+\subsection{A Note on Performance}
 \label{performance}
 
-We evaluate the prototype by comparing the {\aser} and ASTRA implementations. Initially,
-we compared interpreter cycle execution time and the number of iterations based on a
-single configuration of the MG with 29 players and 1000 rounds. For our results, we averaged
+After reviewing our new language, it became apparant that (i) it was reducing the number of plans 
+that need to be evaluated on each iteration; but (ii) the introduction of a goal condition introduces
+a significant new overhead because it must be evaluated on each iteration.
+As a result, it was decided that a comparsion of the new and old languages be carried out. Initially,
+we compared interpreter cycle execution time and the number of iterations based on a single 
+configuration of the MG with 29 players and 1000 rounds. For our results, we averaged
 the values across all 29 players and repeated the experiment 5 times.
 
 \begin{table}[]
@@ -186,12 +221,11 @@ Diff. (\%) & 4.2\%  & 6.8\%  & 4.8\%  & 2.3\%  & 2.0\%
 \end{tabular}
 \end{table}
 
-This second table shows that {\aser} has a small impact on performance, but it is 
-almost linear in this case (ASTRA shows a performance improvement of between 2-6\%).
+This second table shows that the introduction of g-rules in {\aser} has only a small impact on 
+performance. Here, it is almost linear. Further, ASTRA shows a marginal performance improvement of between 2-6\%.
 
-While this is not a thorough evaluation of {\aser}, it does hint that the use of
-goal conditions does not significantly impact the performance of the language. It 
-must also be noted that the prototype implementation is not as mature as the ASTRA
-implementation --- interpreter optimisations could further reduce the difference 
+While this is not intended to be a thorough evaluation of {\aser}, it is useful because
+it hint that the use of goal conditions does not significantly impact the performance 
+of the language. It must also be noted that the prototype implementation is not as mature 
+as the ASTRA implementation --- interpreter optimisations could further reduce the difference 
 in performance.
-
