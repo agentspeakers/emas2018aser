@@ -35,8 +35,8 @@ Existing Agent Programming Languages extended the language with
 constructs and mechanisms making it practical from a programming point
 of view~\cite{jason06}.
 %
-Besides, proposals in literature extended the model is order to make
-it effective for specific kinds of systems --- e.g., real-time
+Besides, proposals in literature extended the model in order to make
+it effective for specific kinds of systems --- e.g. real-time
 systems~\cite{Vikhorev:2011:APP:2030470.2030529} -- or to
 improve the structure of programs, e.g. in terms of
 modularity~\cite{Madden2010,Nunes2014}.
@@ -44,7 +44,7 @@ modularity~\cite{Madden2010,Nunes2014}.
 
 %
 Along this line, in this paper we describe a novel extension of the
-{\asl} model --- called {\aser} --- featuring \emph{plan
+{\asl} language --- called {\aser} --- featuring \emph{plan
   encapsulation}, i.e. the possibility to define plans that fully
 encapsulate the strategy to achieve the corresponding goals,
 integrating both the pro-active and the reactive behaviour.
@@ -63,9 +63,9 @@ agent programming based on the BDI model, namely:
 \item improving intention management, enforcing a one-to-one relation
   between intentions and goals --- so every intention is related to a
   (top-level) goal;
-\item improving failure handling, in particular making it easier the
-  management of failures related to plans for reacting to environment
-  events;
+\item improving failure handling, in particular simplifying the
+  management of failures related to plans that react to environment
+  events.
 \end{itemize}
 %
 % \noindent Besides the benefits in terms of agent programming, the approach reduces the gap between the design level and the programming level,  ...
@@ -75,16 +75,15 @@ agent programming based on the BDI model, namely:
 \noindent The remainder of the paper is organised as follows:
 %
 first we describe in details the motivations that lead to the proposal
-of a new AgentSpeak extension (Section~\ref{sec:motivation});
+of a new AgentSpeak extension (Section~\ref{sec:motivation}).
 %
-then, we introduce and discuss {\aser}, defining the main concepts,
-syntax and semantics --- first informally (Section~\ref{sec:proposal})
-and then providing the formalisation of some key aspect
-(Section~\ref{sec:formalisation}).
+We then introduce and discuss {\aser}, defining the main concepts,
+syntax and informal semantics (Section~\ref{sec:proposal}). %--- first informally (Section~\ref{sec:proposal})
+%and then providing the formalisation of some key aspect (Section~\ref{sec:formalisation}).
 %
-We discuss then the results of a first evaluation that has been
+In Section~\ref{sec:evaluation}, we discuss the results of a first evaluation that has been
 carried out, based on a prototype implementation extending the ASTRA
-platform (Section~\ref{sec:evaluation}).
+platform.
 %
 We conclude the paper discussing related work
 (Section~\ref{sec:related}) and sketching future work

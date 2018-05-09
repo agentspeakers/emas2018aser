@@ -36,11 +36,11 @@ The existing implementation (see Figure~\ref{fig:mgagents}) consists of 3 types 
  ...); the \emph{player} agents, who implement a set of MG strategies; and the \emph{main} agent, 
  which is responsible for configuring the game (creating and configuring the compere and player 
  agents). Interaction between the compere and the players is through a shared game-board artifact 
- implemented using CArtAgO \cite{...}.
+ implemented using CArtAgO~\cite{RicciEPC}.
 
 \begin{figure}[!tbh]
 \centering
-\includegraphics[height=2in, width=2.5in]{mg.png}
+\includegraphics[width=.7\linewidth]{mg.png}
 \caption{Minority Game Agent Architecture}
 \label{fig:mgagents}
 \end{figure}
@@ -49,7 +49,7 @@ The existing implementation currently consists of 2 types of plan: \emph{configu
 called when the agent is created; and \emph{strategy plans} which implement the various potential strategies
 that the agent can use. A subset of the ASTRA implementation of the \emph{player} agent is given below:
 
-{\small
+{\footnotesize
 \begin{verbatim}
   rule +!main(["bestplay", [int t, int h]]) {
     -+strategy("bestplay"); !setup_tactic(t, h); !setup();
@@ -118,7 +118,7 @@ multiple plans to capture a strategy, the entire strategy is now encapsulated wi
 g-plan (of course the other plans still exist as subplans of the g-plan). The snippet of code 
 below contains the {\aser} code to the ASTRA example given above:
 
-{\small
+{\footnotesize
 \begin{verbatim}
   rule +!main([string strategy, list config]) {
     !win(strategy, config);
@@ -189,8 +189,8 @@ the values across all 29 players and repeated the experiment 5 times.
 \centering
 \caption{Comparing ASTRA and {\aser}}
 \label{comparison}
-\begin{tabular}{lll}
-                            & ASER    & ASTRA  \\
+\begin{tabular}{lrrrr}
+                            & ASER    & ASTRA  \\ \toprule
 Cycle Time (ms)             & 0.0017  & 0.0036 \\
 Cycles                      & 293,772 & 62,880 \\
 Elapsed Execution Time (ms) & 495.22  & 229.29 \\
@@ -210,8 +210,8 @@ in Table~\ref{rounds}.
 \centering
 \caption{ASTRA vs {\aser} Performance}
 \label{rounds}
-\begin{tabular}{llllll}
-           & 1000   & 2000   & 3000   & 4000   & 10000   \\
+\begin{tabular}{lrrrrr}
+           & 1000   & 2000   & 3000   & 4000   & 10000   \\ \toprule
 ASER (s)   & 15.514 & 30.251 & 44.202 & 57.736 & 140.059 \\
 ASTRA (s)  & 14.893 & 28.232 & 42.168 & 56.453 & 137.379 \\
 Diff. (\%) & 4.2\%  & 6.8\%  & 4.8\%  & 2.3\%  & 2.0\%  
