@@ -233,7 +233,7 @@ encapsulate the strategy in the same g-plan:
 \end{verbatim}
 \end{small}
 \noindent Now the agent can disable these plans by simply performing
-\texttt{. drop\_intention(be\_obedient)}, and resuming its obedient
+\texttt{.drop\_intention(be\_obedient)}, and resuming its obedient
 behaviour by adopting the goal \texttt{!be\_obedient}, and it can also
 check whether it is being obedient by testing
 \texttt{.intend(be\_obedient)}.
@@ -524,11 +524,11 @@ intentions (those created from goal addition plans).
 %
 %% AR
 %
-\NEW{\noindent As a final remark, the choice of constraining the definition of e-plans 
-to be inside g-plans deserves some further clarification.
+\NEW{\noindent As a final remark, the choice of constraining the
+  definition of e-plans to the scope of a g-plans deserves some further clarification.
 %
 Apparently, it may seems as a limitation, making the approach
-not capable of capturing purely reactive behaviour, enforcing a designer
+not capable of capturing purely reactive behaviour, forcing a designer
 to define artificial goals.
 %
 However, in software development a designer has always a goal in mind 
@@ -543,7 +543,7 @@ The extension presented in this paper is explicitly targeted to the design
 and programming of agents as software components responsible
 of autonomously performing some tasks.
 %
-The extension then allows to enforce a better discipline, enforcing the
-designer to give always an explicit representation (at the programming level)
-about the tasks (goals) she/he has in mind.}
+The extension then promotes a better discipline, enforcing the
+designer to always provide an explicit representation (at the programming level)
+about the goals she/he has in mind.}
 

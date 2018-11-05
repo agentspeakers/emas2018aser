@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017/MacPorts 2017_4)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: splncs03.bst
 Database file #1: main.bib
@@ -10,7 +10,7 @@ Warning--can't use both author and editor fields in Nunes2014
 Warning--can't use both author and editor fields in Ortiz-Hernandez2016
 You've used 31 entries,
             2785 wiz_defined-function locations,
-            826 strings with 12881 characters,
+            826 strings with 12883 characters,
 and the built_in function-call counts, 19487 in all, are:
 = -- 1631
 > -- 595
