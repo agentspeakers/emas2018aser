@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: splncs03.bst
+Database file #1: main.bib
+Warning--can't use both author and editor fields in Busetta2000
+Warning--can't use both author and editor fields in Hindriks2008
+Warning--can't use both author and editor fields in Madden2010
+Warning--can't use both author and editor fields in Nunes2014
+Warning--can't use both author and editor fields in Ortiz-Hernandez2016
+You've used 31 entries,
+            2785 wiz_defined-function locations,
+            826 strings with 12881 characters,
+and the built_in function-call counts, 19487 in all, are:
+= -- 1631
+> -- 595
+< -- 36
++ -- 241
+- -- 205
+* -- 1274
+:= -- 2439
+add.period$ -- 54
+call.type$ -- 31
+change.case$ -- 207
+chr.to.int$ -- 0
+cite$ -- 36
+duplicate$ -- 1720
+empty$ -- 1740
+format.name$ -- 239
+if$ -- 4301
+int.to.chr$ -- 0
+int.to.str$ -- 31
+missing$ -- 362
+newline$ -- 98
+num.names$ -- 78
+pop$ -- 634
+preamble$ -- 1
+purify$ -- 152
+quote$ -- 0
+skip$ -- 541
+stack$ -- 0
+substring$ -- 1168
+swap$ -- 982
+text.length$ -- 36
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 108
+warning$ -- 5
+while$ -- 167
+width$ -- 33
+write$ -- 342
+(There were 5 warnings)

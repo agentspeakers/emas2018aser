@@ -1,0 +1,117 @@
+\documentclass{llncs}
+
+% Load basic packages
+\usepackage{balance} % to better equalize the last page
+\usepackage{graphics} % for EPS, load graphicx instead 
+\usepackage[T1]{fontenc} % for umlauts and other diaeresis
+\usepackage{txfonts}
+\usepackage{mathptmx}
+\usepackage[pdflang={en-US},pdftex]{hyperref}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{microtype}
+\usepackage[all]{hypcap}
+\usepackage{ccicons}
+\usepackage[utf8]{inputenc}
+
+\usepackage{todonotes}
+
+
+%% your usepackages here, for example:
+\usepackage{booktabs}
+\usepackage{bcprules}
+\typicallabel{ClrInt$_4$}
+\usepackage{ASL-ASC-JAIR}
+
+
+\include{macros}
+\sloppy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{AgentSpeak(ER): Enhanced Encapsulation in Agent Plans}
+
+% put your title here!
+%\titlenote{Produces the permission block, and copyright information}
+
+% AAMAS: as appropriate, uncomment one subtitle line; check the CFP
+%\subtitle{Extended Abstract}
+%\subtitle{Industrial Applications Track}
+%\subtitle{Socially Interactive Agents Track}
+%\subtitle{Blue Sky Ideas Track}
+%\subtitle{Robotics Track}
+%\subtitle{JAAMAS Track}
+%\subtitle{Doctoral Mentoring Program}
+
+%\subtitlenote{The full version of the author's guide is available as \texttt{acmart.pdf} document}
+
+\author{Alessandro Ricci\inst{1} \and Rafael H. Bordini\inst{2} \and  Jomi F. H\"ubner\inst{3} \and Rem Collier\inst{4}}
+%\orcid{1234-5678-9012}
+\institute{DISI, University of Bologna,
+%  \streetaddress{Via Sacchi, 3}
+ % \city{Cesena} 
+  %\state{Italy} 
+  % \postcode{47521}
+\email{a.ricci@unibo.it}
+\and
+POLI-PUCRS,
+%  \streetaddress{Av. Ipiranga, 6681}
+ % \city{Porto Alegre, RS} 
+  % \postcode{90619-900}
+  %\state{Brazil} 
+\email{r.bordini@pucrs.br}
+\and
+Federal University of Santa Catarina,
+  %\streetaddress{PO Box 476}
+  %\city{Florianópolis, SC} 
+  %\postcode{88040-900}
+  %\country{Brasil}
+\email{jomi.hubner@ufsc.br}
+\and
+University College of Dublin,
+%  \city{Dublin}
+ % \country{Ireland}
+\email{rem.collier@ucd.ie}}
+
+
+\maketitle
+
+\begin{abstract}  
+  In this paper, we introduce AgentSpeak(ER), an extension of the
+  AgentSpeak(L) language tailored to support encapsulation. The
+  AgentSpeak(ER) extension allows for significantly improving the
+  style of BDI agent programming along relevant aspects, including
+  program modularity and readability, failure handling, and reactive
+  as well as goal-based reasoning. The paper introduces the novel
+  language based on AgentSpeak, %, formalises the changes in the usual semantics of AgentSpeak, 
+  illustrates the features of the language through
+  examples, and shows results of experiments evaluating the proposed
+  language.
+\end{abstract}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% start of main body of paper
+
+\input{intro}
+\input{problem}
+\input{proposal}
+% \input{formalisation}
+\input{evaluation}
+\input{related}
+\input{conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% bibliography: see CFP for number of permitted pages
+
+\bibliographystyle{splncs03}
+\bibliography{main}
+
+\end{document}

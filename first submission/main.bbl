@@ -1,0 +1,170 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem{Albrecht18}
+Ahlbrecht, T., Fiekas, N., Dix, J.: Multi-agent programming contest 2016.
+  International Journal of Agent Oriented Software Engineering  (2018), to
+  appear
+
+\bibitem{jason06}
+Bordini, R., H\"ubner, J.: {BDI} agent programming in {AgentSpeak} using
+  {Jason}. In: Toni, F., Torroni, P. (eds.) CLIMA VI, LNAI, vol. 3900, pp.
+  143--164. Springer (Mar 2006)
+
+\bibitem{BordiniMAPlpa}
+Bordini, R.H., Dastani, M., Dix, J., El~Fallah~Seghrouchni, A. (eds.):
+  Multi-Agent Programming: Languages, Platforms and Applications. No.~15 in
+  Multiagent Systems, Artificial Societies, and Simulated Organizations,
+  Springer (2005)
+
+\bibitem{BordiniMAPlta}
+Bordini, R.H., Dastani, M., Dix, J., El~Fallah~Seghrouchni, A. (eds.):
+  Multi-Agent Programming: Languages, Tools and Applications. Springer (2009)
+
+\bibitem{DBLP:journals/aamas/BordiniFVW06}
+Bordini, R.H., Fisher, M., Visser, W., Wooldridge, M.: Verifying multi-agent
+  programs by model checking. Autonomous Agents and Multi-Agent Systems  12(2),
+   239--256 (2006), \url{https://doi.org/10.1007/s10458-006-5955-7}
+
+\bibitem{bordini:07}
+Bordini, R.H., H\"ubner, J.F., Wooldrige, M.: Programming Multi-Agent Systems
+  in AgentSpeak using \textit{Jason}. Wiley Series in Agent Technology, John
+  Wiley \& Sons (2007), \url{http://jason.sf.net/jBook}
+
+\bibitem{Bratman88}
+Bratman, M.E., Israel, D.J., Pollack, M.E.: Plans and resource-bounded
+  practical reasoning. Computational Intelligence  4,  349--355 (1988),
+  \url{http://dx.doi.org/10.1111/j.1467-8640.1988.tb00284.x}
+
+\bibitem{Busetta2000}
+Busetta, P., Howden, N., R{\"o}nnquist, R., Hodgson, A.: Structuring BDI Agents
+  in Functional Clusters, pp. 277--289. Springer Berlin Heidelberg, Berlin,
+  Heidelberg (2000)
+
+\bibitem{challet2013minority}
+Challet, D., Marsili, M., Zhang, Y.C., et~al.: Minority games: interacting
+  agents in financial markets. OUP Catalogue  (2013)
+
+\bibitem{chmura2004minority}
+Chmura, T., Pitz, T.: Minority game: Experiments and simulations of traffic
+  scenarios. Tech. rep., Bonn econ discussion papers (2004)
+
+\bibitem{cohen:90}
+Cohen, P.R., Levesque, H.J.: Intention is choice with commitment. Artificial
+  Intelligence  42,  213--261 (1990)
+
+\bibitem{DBLP:conf/prima/CollierRL15}
+Collier, R.W., Russell, S.E., Lillis, D.: Reflecting on agent programming with
+  agentspeak(l). In: Chen, Q., Torroni, P., Villata, S., Hsu, J.Y., Omicini, A.
+  (eds.) {PRIMA} 2015: Principles and Practice of Multi-Agent Systems - 18th
+  International Conference, Bertinoro, Italy, 2015, Proceedings. Lecture Notes
+  in Computer Science, vol. 9387, pp. 351--366. Springer (2015)
+
+\bibitem{5285116}
+Dastani, M., Steunebrink, B.: Modularity in bdi-based multi-agent programming
+  languages. In: 2009 IEEE/WIC/ACM International Joint Conference on Web
+  Intelligence and Intelligent Agent Technology. vol.~2, pp. 581--584 (Sept
+  2009)
+
+\bibitem{DBLP:conf/promas/DennisFBFW07}
+Dennis, L.A., Farwer, B., Bordini, R.H., Fisher, M., Wooldridge, M.: A common
+  semantic basis for {BDI} languages. In: Dastani, M., Fallah{-}Seghrouchni,
+  A.E., Ricci, A., Winikoff, M. (eds.) Programming Multi-Agent Systems, 5th
+  International Workshop, ProMAS 2007, USA, 2007, Revised and Invited Papers.
+  Lecture Notes in Computer Science, vol. 4908, pp. 124--139. Springer (2007),
+  \url{https://doi.org/10.1007/978-3-540-79043-3_8}
+
+\bibitem{Georgeff:1987:RRP:1863766.1863818}
+Georgeff, M.P., Lansky, A.L.: Reactive reasoning and planning. In: Proceedings
+  of the Sixth National Conference on Artificial Intelligence - Volume 2. pp.
+  677--682. AAAI'87, AAAI Press (1987),
+  \url{http://dl.acm.org/citation.cfm?id=1863766.1863818}
+
+\bibitem{Hindriks2008}
+Hindriks, K.: Modules as Policy-Based Intentions: Modular Agent Programming in
+  GOAL, pp. 156--171. Springer Berlin Heidelberg, Berlin, Heidelberg (2008)
+
+\bibitem{hubner:06b}
+H{\"u}bner, J.F., Bordini, R.H., Wooldridge, M.: Programming declarative goals
+  using plan patterns. In: Baldoni, M., Endriss, U. (eds.) Proceedings of the
+  Fourth International Workshop on Declarative Agent Languages and Technologies
+  ({DALT} 2006), held with AAMAS 2006, 8th May, Hakodate, Japan. LNCS, vol.
+  4327, pp. 123--140. Springer (2006)
+
+\bibitem{Ingrand:1992:ARR:629535.629890}
+Ingrand, F.F., Georgeff, M.P., Rao, A.S.: An architecture for real-time
+  reasoning and system control. IEEE Expert: Intelligent Systems and Their
+  Applications  7(6),  34--44 (Dec 1992),
+  \url{http://dx.doi.org/10.1109/64.180407}
+
+\bibitem{Madden2010}
+Madden, N., Logan, B.: Modularity and Compositionality in Jason, pp. 237--253.
+  Springer Berlin Heidelberg, Berlin, Heidelberg (2010)
+
+\bibitem{moro2004minority}
+Moro, E.: The minority game: an introductory guide. arXiv preprint
+  cond-mat/0402651  (2004)
+
+\bibitem{Novak:2006:MBA:1160633.1160814}
+Nov\'{a}k, P., Dix, J.: Modular bdi architecture. In: Proceedings of the Fifth
+  International Joint Conference on Autonomous Agents and Multiagent Systems.
+  pp. 1009--1015. AAMAS '06, ACM, New York, NY, USA (2006),
+  \url{http://doi.acm.org/10.1145/1160633.1160814}
+
+\bibitem{Nunes2014}
+Nunes, I.: Improving the Design and Modularity of BDI Agents with Capability
+  Relationships, pp. 58--80. Springer International Publishing, Cham (2014)
+
+\bibitem{Ortiz-Hernandez2016}
+Ortiz-Hern{\'a}ndez, G., H{\"u}bner, J.F., Bordini, R.H., Guerra-Hern{\'a}ndez,
+  A., Hoyos-Rivera, G.J., Cruz-Ram{\'\i}rez, N.: A Namespace Approach for
+  Modularity in BDI Programming Languages, pp. 117--135. Springer International
+  Publishing, Cham (2016)
+
+\bibitem{Rao96}
+Rao, A.S.: Agentspeak(l): {BDI} agents speak out in a logical computable
+  language. In: de~Velde, W.V., Perram, J.W. (eds.) Agents Breaking Away, 7th
+  European Workshop on Modelling Autonomous Agents in a Multi-Agent World,
+  Eindhoven, The Netherlands, January 22-25, 1996, Proceedings. Lecture Notes
+  in Computer Science, vol. 1038, pp. 42--55. Springer (1996)
+
+\bibitem{RicciEPC}
+Ricci, A., Piunti, M., Viroli, M., Omicini, A.: Environment programming in
+  {CArtAgO}. In: Bordini, R.H., Dastani, M., Dix, J., El~Fallah~Seghrouchni, A.
+  (eds.) Multi-Agent Programming: Languages, Tools and Applications, chap.~8,
+  pp. 259--288. Springer (2009)
+
+\bibitem{vanRiemsdijk:2006:GMA:1160633.1160864}
+van Riemsdijk, M.B., Dastani, M., Meyer, J.J.C., de~Boer, F.S.: Goal-oriented
+  modularity in agent programming. In: Proceedings of the Fifth International
+  Joint Conference on Autonomous Agents and Multiagent Systems. pp. 1271--1278.
+  AAMAS '06, ACM, New York, NY, USA (2006)
+
+\bibitem{Sardina2011}
+Sardina, S., Padgham, L.: A bdi agent programming language with failure
+  handling, declarative goals, and planning. Autonomous Agents and Multi-Agent
+  Systems  23(1),  18--70 (Jul 2011)
+
+\bibitem{Vikhorev:2011:APP:2030470.2030529}
+Vikhorev, K., Alechina, N., Logan, B.: Agent programming with priorities and
+  deadlines. In: The 10th International Conference on Autonomous Agents and
+  Multiagent Systems - Volume 1. pp. 397--404. AAMAS '11, International
+  Foundation for Autonomous Agents and Multiagent Systems, Richland, SC (2011),
+  \url{http://dl.acm.org/citation.cfm?id=2030470.2030529}
+
+\bibitem{DBLP:conf/kr/WinikoffPHT02}
+Winikoff, M., Padgham, L., Harland, J., Thangarajah, J.: Declarative {\&}
+  procedural goals in intelligent agent systems. In: Fensel, D., Giunchiglia,
+  F., McGuinness, D.L., Williams, M. (eds.) Proceedings of the Eights
+  International Conference on Principles and Knowledge Representation and
+  Reasoning (KR-02), Toulouse, France, April 22-25, 2002. pp. 470--481. Morgan
+  Kaufmann (2002)
+
+\bibitem{winikoff:02}
+Winikoff, M., Padgham, L., Harland, J., Thangarajah, J.: Declarative and
+  procedural goals in intelligent agent systems. In: Proceedings of the Eighth
+  International Conference on Principles of Knowledge Representation and
+  Reasoning (2002)
+
+\end{thebibliography}
